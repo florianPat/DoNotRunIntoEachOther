@@ -20,13 +20,16 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "SpriteCodex.h"
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
 	frameTimer(),
-	tileMap(gfx)
+	tileMap(gfx),
+	player1({20, 20}, wnd.kbd, tileMap, 0, 'a', 'd', 'w', 's'),
+	player2({40, 40}, wnd.kbd, tileMap, 1, VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN)
 {
 }
 
@@ -41,9 +44,18 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	float dt = frameTimer.Mark();
+
+	if (!isGameOver) //TODO: Make that you can reset and play again with the space bar if it is game over
+	{
+		isGameOver = player1.update(dt);
+		isGameOver = player2.update(dt);
+	}
 }
 
 void Game::ComposeFrame()
 {
-	tileMap.draw();
+	if (!isGameOver)
+		tileMap.draw();
+	else
+		SpriteCodex::DrawGameOver(gfx.ScreenWidth / 2, gfx.ScreenHeight / 2, gfx);
 }

@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "FrameTimer.h"
 #include "TileMap.h"
+#include "Player.h"
 
 class Game
 {
@@ -46,5 +47,7 @@ private:
 	/*  User Variables              */
 	FrameTimer frameTimer;
 	TileMap tileMap;
+	bool isGameOver = false;
+	Player player1, player2;
 	/********************************/
 };

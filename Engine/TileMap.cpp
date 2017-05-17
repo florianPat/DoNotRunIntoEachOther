@@ -11,7 +11,7 @@ void TileMap::draw()
 		for (int x = 0; x < width; ++x)
 		{
 			Color color;
-			Vec2 pos(x * tilesSize, y * tilesSize);
+			Vec2 pos((float)x * tilesSize, (float)y * tilesSize);
 
 			switch (tileMap[x + y * width])
 			{
@@ -29,17 +29,17 @@ void TileMap::draw()
 				}	break;
 			}
 
-			gfx.DrawRect(pos.x, pos.y, pos.x + tilesSize, pos.y + tilesSize, color);
+			gfx.DrawRect((int)pos.x, (int)pos.y, (int)pos.x + tilesSize, (int)pos.y + tilesSize, color);
 		}
 	}
 }
 
 void TileMap::setTileTypeAtPos(TYPE type, Vec2 & pos)
 {
-	tileMap[pos.x + pos.y * width] = type;
+	tileMap[(int)pos.x + (int)pos.y * width] = type;
 }
 
 TileMap::TYPE TileMap::getTileTypeAtPos(Vec2 & pos)
 {
-	return tileMap[pos.x + pos.y * width];
+	return tileMap[(int)pos.x + (int)pos.y * width];
 }
