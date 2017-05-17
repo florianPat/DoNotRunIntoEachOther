@@ -24,7 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	frameTimer(),
+	tileMap(gfx)
 {
 }
 
@@ -38,8 +40,10 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	float dt = frameTimer.Mark();
 }
 
 void Game::ComposeFrame()
 {
+	tileMap.draw();
 }
