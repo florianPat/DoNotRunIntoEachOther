@@ -28,7 +28,7 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	frameTimer(),
 	tileMap(gfx),
-	player1({20, 20}, wnd.kbd, tileMap, 0, 'a', 'd', 'w', 's'),
+	player1({20, 20}, wnd.kbd, tileMap, 0, 0x41, 0x44, 0x57, 0x53),
 	player2({40, 40}, wnd.kbd, tileMap, 1, VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN)
 {
 }
